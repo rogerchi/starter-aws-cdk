@@ -1,5 +1,5 @@
 node_modules/
 
-/.cache
-/build
-/public/build
+/remix-starter-apigateway/.cache
+/remix-starter-apigateway/build
+/remix-starter-apigateway/public/build

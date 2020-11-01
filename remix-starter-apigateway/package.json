@@ -1,5 +1,5 @@
 {
-  "name": "remix-starter-express",
+  "name": "remix-starter-apigateway",
   "version": "1.0.0",
   "scripts": {
     "build": "remix build && tsc -b",
