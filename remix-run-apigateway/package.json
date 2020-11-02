@@ -4,7 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "install": "npm run build"
   },
   "author": "Matt Farmer <work@mattfarmer.net>",
   "license": "ISC",

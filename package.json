@@ -1,0 +1,14 @@
+{
+  "name": "starter-aws-cdk",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  },
+  "dependencies": {},
+  "scripts": {
+    "bootstrap": "lerna bootstrap --force-local",
+    "clean": "lerna clean && lerna run clean",
+    "build:starter": "lerna run --scope remix-starter-apigateway build",
+    "deploy": "npm run bootstrap && npm run build:starter && cd cdk && npm run deploy"
+  }
+}

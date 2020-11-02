@@ -1,0 +1,8 @@
+{
+  "packages": [
+    "cdk",
+    "remix-run-apigateway",
+    "remix-starter-apigateway"
+  ],
+  "version": "0.0.0"
+}
