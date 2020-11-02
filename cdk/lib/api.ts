@@ -4,6 +4,8 @@ import * as lambda from "@aws-cdk/aws-lambda";
 import * as path from "path";
 
 export class Api extends core.Construct {
+  public httpApi: apigatewayv2.HttpApi;
+
   constructor(scope: core.Construct, id: string) {
     super(scope, id);
 
@@ -26,7 +28,7 @@ export class Api extends core.Construct {
       payloadFormatVersion: apigatewayv2.PayloadFormatVersion.VERSION_1_0,
     });
 
-    new apigatewayv2.HttpApi(this, `${scope}-api`, {
+    this.httpApi = new apigatewayv2.HttpApi(this, `${scope}-api`, {
       defaultIntegration: integration,
     });
   }
