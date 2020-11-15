@@ -1,4 +1,5 @@
 import * as apigatewayv2 from "@aws-cdk/aws-apigatewayv2";
+import * as apigatewayv2Integrations from "@aws-cdk/aws-apigatewayv2-integrations";
 import * as core from "@aws-cdk/core";
 import * as lambda from "@aws-cdk/aws-lambda";
 import * as path from "path";
@@ -23,7 +24,7 @@ export class Api extends core.Construct {
       tracing: lambda.Tracing.DISABLED,
     });
 
-    const integration = new apigatewayv2.LambdaProxyIntegration({
+    const integration = new apigatewayv2Integrations.LambdaProxyIntegration({
       handler,
       payloadFormatVersion: apigatewayv2.PayloadFormatVersion.VERSION_1_0,
     });
