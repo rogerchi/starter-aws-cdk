@@ -1,16 +1,13 @@
-import * as apigatewayv2 from "@aws-cdk/aws-apigatewayv2";
+import * as certificatemanager from "@aws-cdk/aws-certificatemanager";
 import * as core from "@aws-cdk/core";
 import * as cloudfront from "@aws-cdk/aws-cloudfront";
 import * as origins from "@aws-cdk/aws-cloudfront-origins";
 import * as s3 from "@aws-cdk/aws-s3";
 import * as S3Deployment from "@aws-cdk/aws-s3-deployment";
+import { CdnProps } from "../types";
 
 // @ts-ignore -- implicitly 'any' type.
 import * as remixConfig from "../../remix-starter-apigateway/remix.config";
-
-interface CdnProps {
-  httpApi: apigatewayv2.HttpApi;
-}
 
 export class CDN extends core.Construct {
   public distribution: cloudfront.Distribution;
@@ -27,10 +24,24 @@ export class CDN extends core.Construct {
       destinationBucket: staticBucket,
     });
 
+    let domainNames;
+    let certificate;
+    if (props.certificateArn && props.domainName) {
+      certificate = certificatemanager.Certificate.fromCertificateArn(
+        this,
+        `${id}-certificate`,
+        props.certificateArn
+      );
+
+      domainNames = [props.domainName];
+    }
+
     this.distribution = new cloudfront.Distribution(
       this,
       `${id}-distribution`,
       {
+        domainNames,
+        certificate,
         defaultBehavior: {
           allowedMethods: cloudfront.AllowedMethods.ALLOW_ALL,
           cachePolicy: cloudfront.CachePolicy.CACHING_DISABLED,

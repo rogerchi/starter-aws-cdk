@@ -6,4 +6,4 @@ import remixStackConfig from "../../remix-stack-config";
 
 const stackName = remixStackConfig.stackName || "remix";
 const app = new cdk.App();
-new RemixStack(app, stackName);
+new RemixStack(app, stackName, { remixStackConfig });
