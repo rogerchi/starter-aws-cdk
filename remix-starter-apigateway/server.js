@@ -1,7 +1,10 @@
+//
+// NOTE: This file will be used on AWS Lambda.
+//       "server-local.js" will be used for local development
+//
 const { createRequestHandler } = require("remix-run-apigateway");
+const {
+  createRequestHandlerConfig,
+} = require("./create-request-handler-config");
 
-exports.handler = createRequestHandler({
-  getLoadContext() {
-    // Whatever you return here will be passed as `context` to your loaders.
-  },
-});
+exports.handler = createRequestHandler(createRequestHandlerConfig);
