@@ -19,6 +19,7 @@ export class Api extends core.Construct {
       environment: {
         AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
         NODE_ENV: "production",
+        ...props?.lambdaEnvironmentVariables,
       },
       handler: "server.handler",
       memorySize: props?.lambdaMemorySize || 128,

@@ -38,13 +38,14 @@ account.
 The `remix-stack-config.ts` can be used to configure your deployment. It
 contains the following options:
 
-| Key                         | Default | Description                                                                                                                                                                           |
-| --------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `stackname`                 | `remix` | The name of the CloudFormation stack that will be created                                                                                                                             |
-| `domainName`                |         | The domain name to be used as an alias for the CloudFront CDN distribution                                                                                                            |
-| `lambdaMemorySize`          | `128`   | The amount of memory, in MB, to assign to the lambda function. After deploying, you can use [`lumigo-cli powertune-lambda`][lumigo-powertune] to determine the best value to use here |
-| `certificateArn`            |         | The ARN for the AWS Certificate Manager certificate for the `domainName`                                                                                                              |
-| `hostedZoneId` & `zoneName` |         | If both of these values are provided, then an A Record will be created in this hosted Zone for the `domainName`                                                                       |
+| Key                          | Default | Description                                                                                                                                                                           |
+| ---------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `stackname`                  | `remix` | The name of the CloudFormation stack that will be created                                                                                                                             |
+| `domainName`                 |         | The domain name to be used as an alias for the CloudFront CDN distribution                                                                                                            |
+| `lambdaMemorySize`           | `128`   | The amount of memory, in MB, to assign to the lambda function. After deploying, you can use [`lumigo-cli powertune-lambda`][lumigo-powertune] to determine the best value to use here |
+| `lambdaEnvironmentVariables` |         | An object of key/value pairs of the ENV variables that you want to expose to your lambda function                                                                                     |
+| `certificateArn`             |         | The ARN for the AWS Certificate Manager certificate for the `domainName`                                                                                                              |
+| `hostedZoneId` & `zoneName`  |         | If both of these values are provided, then an A Record will be created in this hosted Zone for the `domainName`                                                                       |
 
 ## Deploy
 

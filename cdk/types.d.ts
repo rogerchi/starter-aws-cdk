@@ -3,6 +3,7 @@ import * as apigatewayv2 from "@aws-cdk/aws-apigatewayv2";
 import * as cloudfront from "@aws-cdk/aws-cloudfront";
 
 type ApiConfig = {
+  readonly lambdaEnvironmentVariables?: Record<string, string>;
   readonly lambdaMemorySize?: number;
 };
 export type ApiProps = ApiConfig;

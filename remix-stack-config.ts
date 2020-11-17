@@ -4,6 +4,11 @@ const remixStackConfig: RemixStackConfig = {
   // If not specified, the `stackName` will default to "remix"
   // stackName: "customStackName",
   //
+  // You can optionally provide ENV variables for your lambda function
+  // lambdaEnvironmentVariables: {
+  //   YOUR_ENV_VAR_HERE: process.env.YOUR_ENV_VAR_HERE!,
+  // },
+  //
   // Configure the amount of memory available to your lambda function, in MB
   // Default is 128
   // lambdaMemorySize: 256,

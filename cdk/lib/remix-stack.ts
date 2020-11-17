@@ -12,11 +12,13 @@ export class RemixStack extends cdk.Stack {
       domainName,
       certificateArn,
       hostedZoneId,
+      lambdaEnvironmentVariables,
       lambdaMemorySize,
       zoneName,
     } = props.remixStackConfig;
 
     const remixAPI = new Api(this, `${id}-api`, {
+      lambdaEnvironmentVariables,
       lambdaMemorySize,
     });
 
