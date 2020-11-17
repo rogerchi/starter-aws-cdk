@@ -38,12 +38,13 @@ account.
 The `remix-stack-config.ts` can be used to configure your deployment. It
 contains the following options:
 
-| Key                         | Default | Description                                                                                                     |
-| --------------------------- | ------- | --------------------------------------------------------------------------------------------------------------- |
-| `stackname`                 | `remix` | The name of the CloudFormation stack that will be created                                                       |
-| `domainName`                |         | The domain name to be used as an alias for the CloudFront CDN distribution                                      |
-| `certificateArn`            |         | The ARN for the AWS Certificate Manager certificate for the `domainName`                                        |
-| `hostedZoneId` & `zoneName` |         | If both of these values are provided, then an A Record will be created in this hosted Zone for the `domainName` |
+| Key                         | Default | Description                                                                                                                                                                           |
+| --------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `stackname`                 | `remix` | The name of the CloudFormation stack that will be created                                                                                                                             |
+| `domainName`                |         | The domain name to be used as an alias for the CloudFront CDN distribution                                                                                                            |
+| `lambdaMemorySize`          | `128`   | The amount of memory, in MB, to assign to the lambda function. After deploying, you can use [`lumigo-cli powertune-lambda`][lumigo-powertune] to determine the best value to use here |
+| `certificateArn`            |         | The ARN for the AWS Certificate Manager certificate for the `domainName`                                                                                                              |
+| `hostedZoneId` & `zoneName` |         | If both of these values are provided, then an A Record will be created in this hosted Zone for the `domainName`                                                                       |
 
 ## Deploy
 
@@ -63,5 +64,6 @@ cdk destroy
 <!-- links -->
 
 [aws-cdk]: https://aws.amazon.com/cdk/
+[lumigo-powertune]: https://github.com/lumigo-io/lumigo-cli#lumigo-cli-powertune-lambda
 [remix]: https://remix.run/
 [remix-run-apigateway]: https://github.com/m14t/remix-run-apigateway

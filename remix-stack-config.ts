@@ -4,6 +4,10 @@ const remixStackConfig: RemixStackConfig = {
   // If not specified, the `stackName` will default to "remix"
   // stackName: "customStackName",
   //
+  // Configure the amount of memory available to your lambda function, in MB
+  // Default is 128
+  // lambdaMemorySize: 256,
+  //
   // If you would like to configure a custom domain for your CDN you must
   // specify the `domainName` and a `certificateArn` for that domain.  The
   // certificate can be created at: https://console.aws.amazon.com/acm/home

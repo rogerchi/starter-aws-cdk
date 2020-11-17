@@ -3,14 +3,16 @@ import * as apigatewayv2Integrations from "@aws-cdk/aws-apigatewayv2-integration
 import * as core from "@aws-cdk/core";
 import * as lambda from "@aws-cdk/aws-lambda";
 import * as path from "path";
+import { ApiProps } from "../types";
 
 export class Api extends core.Construct {
+  public handler: lambda.Function;
   public httpApi: apigatewayv2.HttpApi;
 
-  constructor(scope: core.Construct, id: string) {
+  constructor(scope: core.Construct, id: string, props?: ApiProps) {
     super(scope, id);
 
-    const handler = new lambda.Function(this, `${scope}-defaultLambda`, {
+    this.handler = new lambda.Function(this, `${scope}-defaultLambda`, {
       code: lambda.Code.fromAsset(
         path.join(__dirname, "../../remix-starter-apigateway")
       ),
@@ -19,13 +21,14 @@ export class Api extends core.Construct {
         NODE_ENV: "production",
       },
       handler: "server.handler",
+      memorySize: props?.lambdaMemorySize || 128,
       runtime: lambda.Runtime.NODEJS_12_X,
       timeout: core.Duration.seconds(15),
       tracing: lambda.Tracing.DISABLED,
     });
 
     const integration = new apigatewayv2Integrations.LambdaProxyIntegration({
-      handler,
+      handler: this.handler,
       payloadFormatVersion: apigatewayv2.PayloadFormatVersion.VERSION_2_0,
     });
 

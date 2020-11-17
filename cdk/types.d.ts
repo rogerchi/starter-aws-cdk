@@ -2,6 +2,11 @@ import * as cdk from "@aws-cdk/core";
 import * as apigatewayv2 from "@aws-cdk/aws-apigatewayv2";
 import * as cloudfront from "@aws-cdk/aws-cloudfront";
 
+type ApiConfig = {
+  readonly lambdaMemorySize?: number;
+};
+export type ApiProps = ApiConfig;
+
 type CdnConfig = {
   readonly certificateArn?: string;
   readonly domainName?: string;
@@ -20,7 +25,8 @@ export type DomainProps = DomainConfig & {
   readonly distribution: cloudfront.Distribution;
 };
 
-export type RemixStackConfig = CdnConfig &
+export type RemixStackConfig = ApiConfig &
+  CdnConfig &
   DomainConfig & {
     readonly stackName?: string;
   };

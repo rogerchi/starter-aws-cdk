@@ -10,12 +10,15 @@ export class RemixStack extends cdk.Stack {
 
     const {
       domainName,
-      hostedZoneId,
       certificateArn,
+      hostedZoneId,
+      lambdaMemorySize,
       zoneName,
     } = props.remixStackConfig;
 
-    const remixAPI = new Api(this, `${id}-api`);
+    const remixAPI = new Api(this, `${id}-api`, {
+      lambdaMemorySize,
+    });
 
     const cdn = new CDN(this, `${id}-cdn`, {
       certificateArn,
@@ -36,6 +39,9 @@ export class RemixStack extends cdk.Stack {
     new cdk.CfnOutput(this, "apiUrl", { value: remixAPI.httpApi.url || "" });
     new cdk.CfnOutput(this, "cdnDomainName", {
       value: domainName ? domainName : cdn.distribution.domainName,
+    });
+    new cdk.CfnOutput(this, "lambdaFunctionName", {
+      value: remixAPI.handler.functionName || "",
     });
   }
 }
