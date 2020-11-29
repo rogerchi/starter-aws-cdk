@@ -36,6 +36,15 @@ export class CDN extends core.Construct {
       domainNames = [props.domainName];
     }
 
+    const cachePolicy = new cloudfront.CachePolicy(this, `${id}-cachePolicy`, {
+      defaultTtl: core.Duration.seconds(0),
+      minTtl: core.Duration.seconds(0),
+      maxTtl: core.Duration.days(10),
+      queryStringBehavior: cloudfront.CacheQueryStringBehavior.all(),
+      enableAcceptEncodingGzip: true,
+      enableAcceptEncodingBrotli: true,
+    });
+
     this.distribution = new cloudfront.Distribution(
       this,
       `${id}-distribution`,
@@ -44,7 +53,7 @@ export class CDN extends core.Construct {
         certificate,
         defaultBehavior: {
           allowedMethods: cloudfront.AllowedMethods.ALLOW_ALL,
-          cachePolicy: cloudfront.CachePolicy.CACHING_DISABLED,
+          cachePolicy,
           origin: new origins.HttpOrigin(httpApiHost),
           viewerProtocolPolicy:
             cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
