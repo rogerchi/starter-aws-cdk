@@ -26,7 +26,7 @@ export class Api extends core.Construct {
 
     const integration = new apigatewayv2Integrations.LambdaProxyIntegration({
       handler,
-      payloadFormatVersion: apigatewayv2.PayloadFormatVersion.VERSION_1_0,
+      payloadFormatVersion: apigatewayv2.PayloadFormatVersion.VERSION_2_0,
     });
 
     this.httpApi = new apigatewayv2.HttpApi(this, `${scope}-api`, {
