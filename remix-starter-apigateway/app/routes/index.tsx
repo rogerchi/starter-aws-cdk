@@ -4,7 +4,13 @@ import { useRouteData } from "@remix-run/react";
 export function meta() {
   return {
     title: "Remix Starter",
-    description: "Welcome to remix!"
+    description: "Welcome to remix!",
+  };
+}
+
+export function headers({ loaderHeaders }: { loaderHeaders: Headers }) {
+  return {
+    "cache-control": loaderHeaders.get("cache-control"),
   };
 }
 
