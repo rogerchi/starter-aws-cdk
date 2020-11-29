@@ -3,13 +3,13 @@
 This a mono-repo several packages to serve as an example getting up and
 running with [Remix][remix] on AWS using [AWS CDK][aws-cdk].
 
-It comprises of 3 packages:
+It uses [@m14t/remix-run-apigateway][remix-run-apigateway] for the Remix
+bindings to AWS Lambda. This the AWS Lambda equivalent of `@remix-run/express`
+when using Remix with Express.
 
-- `remix-run-apigateway` - Remix bindings for AWS Lambda. This the AWS Lambda
-  equivalent of `@remix-run/express` when using Remix with Express. This could
-  be used in any project deploying to AWS Lambda, regardless of the deployment
-  method (CDK, Amplify, etc).
-- `remix-starter-apigateway` - An example project using `remix-run-apigateway`
+It comprises of 2 packages:
+
+- `remix-starter-apigateway` - An example project using [@m14t/remix-run-apigateway][remix-run-apigateway]
 - `cdk` - An AWS CDK project to deploy `remix-starter-apigateway`
 
 ## Install
@@ -64,3 +64,4 @@ cdk destroy
 
 [aws-cdk]: https://aws.amazon.com/cdk/
 [remix]: https://remix.run/
+[remix-run-apigateway]: https://github.com/m14t/remix-run-apigateway
