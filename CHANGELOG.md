@@ -1,5 +1,9 @@
 # Changelog
 
+## 2020-12-09
+
+- Add basic session example
+
 ## 2020-11-29
 
 - Updated to work with @remix-run v0.8.0
