@@ -37,6 +37,7 @@ export class CDN extends core.Construct {
     }
 
     const cachePolicy = new cloudfront.CachePolicy(this, `${id}-cachePolicy`, {
+      cookieBehavior: cloudfront.CacheCookieBehavior.all(),
       defaultTtl: core.Duration.seconds(0),
       minTtl: core.Duration.seconds(0),
       maxTtl: core.Duration.days(10),

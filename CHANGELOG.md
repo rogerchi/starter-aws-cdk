@@ -3,6 +3,7 @@
 ## 2020-12-09
 
 - Add basic session example
+- Configure CDN to forward cookies
 
 ## 2020-11-29
 
