@@ -29,6 +29,7 @@ export type DomainProps = DomainConfig & {
 export type RemixStackConfig = ApiConfig &
   CdnConfig &
   DomainConfig & {
+    readonly remixCookieSecret?: string;
     readonly stackName?: string;
   };
 

@@ -33,6 +33,10 @@ const remixStackConfig: RemixStackConfig = {
   //
   // hostedZoneId: "XXXXXXXXXXXXXX",
   // zoneName: "yourZone.tld",
+  //
+  // If you are using jwtCookieSessionHandlerFactory, you'll want to configure
+  // an ENV variable for the secret used there.
+  remixCookieSecret: process.env.REMIX_COOKIE_SECRET,
 };
 
 export default remixStackConfig;

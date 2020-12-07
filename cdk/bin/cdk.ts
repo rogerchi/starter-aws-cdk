@@ -8,6 +8,11 @@ const stackName = remixStackConfig.stackName || "remix";
 const app = new cdk.App();
 const remixStack = new RemixStack(app, stackName, { remixStackConfig });
 
+remixStack.api.handler.addEnvironment(
+  "REMIX_COOKIE_SECRET",
+  remixStackConfig.remixCookieSecret!
+);
+
 new cdk.CfnOutput(remixStack, "apiUrl", {
   value: remixStack.api.httpApi.url || "",
 });
