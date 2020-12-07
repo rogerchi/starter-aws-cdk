@@ -4,6 +4,7 @@
 
 - Add basic session example
 - Configure CDN to forward cookies
+- Expose RemixStack CDK components
 
 ## 2020-11-29
 

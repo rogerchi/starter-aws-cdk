@@ -5,6 +5,10 @@ import { Domain } from "./domain";
 import { RemixStackProps } from "../types";
 
 export class RemixStack extends cdk.Stack {
+  public api: Api;
+  public cdn: CDN;
+  public domain: Domain;
+
   constructor(scope: cdk.Construct, id: string, props: RemixStackProps) {
     super(scope, id, props);
 
@@ -17,33 +21,25 @@ export class RemixStack extends cdk.Stack {
       zoneName,
     } = props.remixStackConfig;
 
-    const remixAPI = new Api(this, `${id}-api`, {
+    this.api = new Api(this, `${id}-api`, {
       lambdaEnvironmentVariables,
       lambdaMemorySize,
     });
 
-    const cdn = new CDN(this, `${id}-cdn`, {
+    this.cdn = new CDN(this, `${id}-cdn`, {
       certificateArn,
       domainName,
-      httpApi: remixAPI.httpApi,
+      httpApi: this.api.httpApi,
     });
 
     if (domainName && hostedZoneId && zoneName) {
       // If a hostedZoneId and domainName are set, link it to the CDN
-      new Domain(this, `${id}-domain`, {
-        distribution: cdn.distribution,
+      this.domain = new Domain(this, `${id}-domain`, {
+        distribution: this.cdn.distribution,
         domainName,
         hostedZoneId,
         zoneName,
       });
     }
-
-    new cdk.CfnOutput(this, "apiUrl", { value: remixAPI.httpApi.url || "" });
-    new cdk.CfnOutput(this, "cdnDomainName", {
-      value: domainName ? domainName : cdn.distribution.domainName,
-    });
-    new cdk.CfnOutput(this, "lambdaFunctionName", {
-      value: remixAPI.handler.functionName || "",
-    });
   }
 }
