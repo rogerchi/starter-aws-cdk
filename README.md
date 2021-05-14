@@ -3,13 +3,11 @@
 This a mono-repo several packages to serve as an example getting up and
 running with [Remix][remix] on AWS using [AWS CDK][aws-cdk].
 
-It uses [@m14t/remix-run-apigateway][remix-run-apigateway] for the Remix
-bindings to AWS Lambda. This the AWS Lambda equivalent of `@remix-run/express`
-when using Remix with Express.
+It uses `@remix-run/architect` for the Remix bindings to AWS Lambda, but deploys via CDK.  The arc tools (e.g. `arc sandbox`) can still be used for local development.
 
 It comprises of 2 packages:
 
-- `remix-starter-apigateway` - An example project using [@m14t/remix-run-apigateway][remix-run-apigateway]
+- `remix-starter-architect` - The default Architect starter when running `npm init remix`
 - `cdk` - An AWS CDK project to deploy `remix-starter-apigateway`
 
 ## Install
@@ -32,6 +30,7 @@ account.
    cd cdk
    cdk bootstrap
    ```
+3. `us-east-1` will also need to be cdk bootstrapped because Lambda@Edge functions are deployed there.
 
 ## Configure
 

@@ -13,10 +13,10 @@
     "watch": "tsc -w"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "1.73.0",
+    "@aws-cdk/assert": "1.103.0",
     "@types/jest": "^26.0.10",
     "@types/node": "^12.19.3",
-    "aws-cdk": "1.73.0",
+    "aws-cdk": "1.103.0",
     "jest": "^26.4.2",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.2.0",
@@ -24,17 +24,17 @@
     "typescript": "~3.9.7"
   },
   "dependencies": {
-    "@aws-cdk/aws-apigatewayv2": "1.73.0",
-    "@aws-cdk/aws-apigatewayv2-integrations": "^1.73.0",
-    "@aws-cdk/aws-certificatemanager": "1.73.0",
-    "@aws-cdk/aws-cloudfront": "1.73.0",
-    "@aws-cdk/aws-cloudfront-origins": "1.73.0",
-    "@aws-cdk/aws-lambda": "1.73.0",
-    "@aws-cdk/aws-route53": "1.73.0",
-    "@aws-cdk/aws-route53-targets": "1.73.0",
-    "@aws-cdk/aws-s3": "1.73.0",
-    "@aws-cdk/aws-s3-deployment": "1.73.0",
-    "@aws-cdk/core": "1.73.0",
+    "@aws-cdk/aws-apigatewayv2": "1.103.0",
+    "@aws-cdk/aws-apigatewayv2-integrations": "^1.103.0",
+    "@aws-cdk/aws-certificatemanager": "1.103.0",
+    "@aws-cdk/aws-cloudfront": "1.103.0",
+    "@aws-cdk/aws-cloudfront-origins": "1.103.0",
+    "@aws-cdk/aws-lambda": "1.103.0",
+    "@aws-cdk/aws-route53": "1.103.0",
+    "@aws-cdk/aws-route53-targets": "1.103.0",
+    "@aws-cdk/aws-s3": "1.103.0",
+    "@aws-cdk/aws-s3-deployment": "1.103.0",
+    "@aws-cdk/core": "1.103.0",
     "source-map-support": "^0.5.16"
   }
 }

@@ -14,14 +14,14 @@ export class Api extends core.Construct {
 
     this.handler = new lambda.Function(this, `${scope}-defaultLambda`, {
       code: lambda.Code.fromAsset(
-        path.join(__dirname, "../../remix-starter-apigateway")
+        path.join(__dirname, "../../remix-starter-architect/server")
       ),
       environment: {
         AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
         NODE_ENV: "production",
         ...props?.lambdaEnvironmentVariables,
       },
-      handler: "server.handler",
+      handler: "index.handler",
       memorySize: props?.lambdaMemorySize || 128,
       runtime: lambda.Runtime.NODEJS_12_X,
       timeout: core.Duration.seconds(15),

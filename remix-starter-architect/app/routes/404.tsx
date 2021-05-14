@@ -1,8 +1,8 @@
-import React from "react";
+import type { MetaFunction } from "remix";
 
-export function meta() {
+export let meta: MetaFunction = () => {
   return { title: "Ain't nothing here" };
-}
+};
 
 export default function FourOhFour() {
   return (
